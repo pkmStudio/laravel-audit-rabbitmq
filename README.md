@@ -47,11 +47,11 @@ Before Packagist, add both GitHub repositories to the consuming app:
     },
     {
       "type": "vcs",
-      "url": "https://github.com/dan-center/audit"
+      "url": "https://github.com/pkmStudio/laravel-audit-rabbitmq"
     }
   ],
   "require": {
-    "dan-center/audit": "^1.0",
+    "dan-center/audit": "dev-master",
     "dan-center/rabbit-transport": "dev-master"
   }
 }
