@@ -6,7 +6,8 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/pkmStudio/laravel-rabbitmq-transport"
+            "url": "https://github.com/pkmStudio/laravel-rabbitmq-transport",
+            "no-api": true
         }
     ],
     "require": {
