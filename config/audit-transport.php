@@ -32,6 +32,17 @@ return [
     'event_name' => env('AUDIT_EVENT_NAME', 'AUDIT_RECORDED'),
 
     /*
+    | Ключ Context для источника аудита и fallback-значения источников.
+    | CRM-импорты кладут в этот Context `file`; UI по умолчанию получает `filament`,
+    | console/queue-контекст — `system`.
+    */
+    'source_context_key' => env('AUDIT_SOURCE_CONTEXT_KEY', 'audit_source'),
+
+    'default_console_source' => env('AUDIT_DEFAULT_CONSOLE_SOURCE', 'system'),
+
+    'default_http_source' => env('AUDIT_DEFAULT_HTTP_SOURCE', 'filament'),
+
+    /*
     | Порог «зависшей» outbox-записи (минуты) для ресендера: записи с
     | published_at = null старше этого порога переотправляются.
     */

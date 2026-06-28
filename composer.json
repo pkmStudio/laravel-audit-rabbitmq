@@ -1,12 +1,12 @@
 {
     "name": "dan-center/audit",
-    "description": "Shared audit grane: owen-it Audit model (readable unicode + nested JSON decode), source-tagging trait, outbox producer over rabbit-transport, and app-agnostic inbox consumer.",
+    "description": "Shared audit package: owen-it Audit model (readable unicode + nested JSON decode), source-tagging trait, outbox producer over rabbit-transport, and app-agnostic inbox consumer.",
     "type": "library",
     "license": "proprietary",
     "repositories": [
         {
-            "type": "path",
-            "url": "../rabbit-transport"
+            "type": "vcs",
+            "url": "https://github.com/pkmStudio/laravel-rabbitmq-transport"
         }
     ],
     "require": {
@@ -16,7 +16,7 @@
         "illuminate/console": "^12.0",
         "illuminate/contracts": "^12.0",
         "owen-it/laravel-auditing": "^14.0",
-        "dan-center/rabbit-transport": "@dev"
+        "dan-center/rabbit-transport": "dev-master"
     },
     "require-dev": {
         "orchestra/testbench": "^10.0",
