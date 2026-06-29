@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace DanCenter\Audit\Console\Commands;
+namespace PkmStudio\Audit\Console\Commands;
 
-use DanCenter\Audit\Services\AuditOutboxService;
+use PkmStudio\Audit\Services\AuditOutboxService;
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Log;

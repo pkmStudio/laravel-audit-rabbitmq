@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace DanCenter\Audit\Tests;
+namespace PkmStudio\Audit\Tests;
 
-use DanCenter\Audit\AuditServiceProvider;
-use DanCenter\Audit\Models\Audit;
-use DanCenter\RabbitTransport\RabbitTransportServiceProvider;
+use PkmStudio\Audit\AuditServiceProvider;
+use PkmStudio\Audit\Models\Audit;
+use PkmStudio\RabbitTransport\RabbitTransportServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 /**
- * Базовый TestCase пакета dan-center/audit на основе Orchestra Testbench.
+ * Базовый TestCase пакета pkmstudio/audit на основе Orchestra Testbench.
  */
 abstract class TestCase extends Orchestra
 {

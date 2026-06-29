@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace DanCenter\Audit;
+namespace PkmStudio\Audit;
 
-use DanCenter\Audit\Console\Commands\ResendFailedAuditRecordsCommand;
-use DanCenter\Audit\Contracts\AuditMessagePublisher;
-use DanCenter\Audit\Publishers\RabbitTransportAuditMessagePublisher;
+use PkmStudio\Audit\Console\Commands\ResendFailedAuditRecordsCommand;
+use PkmStudio\Audit\Contracts\AuditMessagePublisher;
+use PkmStudio\Audit\Publishers\RabbitTransportAuditMessagePublisher;
 use Illuminate\Support\ServiceProvider;
 
 /**
- * Сервис-провайдер пакета dan-center/audit.
+ * Сервис-провайдер пакета pkmstudio/audit.
  *
  * Регистрирует конфигурацию доставки аудита, публикует миграции таблицы `audits`
  * и регистрирует console-команды producer-грани. Producer-грань публикует записи
- * через dan-center/rabbit-transport, consumer-грань принимает их в любой
+ * через pkmstudio/rabbit-transport, consumer-грань принимает их в любой
  * реализации сервиса.
  */
 final class AuditServiceProvider extends ServiceProvider

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace DanCenter\Audit\Tests\Fakes;
+namespace PkmStudio\Audit\Tests\Fakes;
 
-use DanCenter\Audit\Contracts\AuditMessagePublisher;
-use DanCenter\RabbitTransport\DTOs\RabbitMessageDTO;
+use PkmStudio\Audit\Contracts\AuditMessagePublisher;
+use PkmStudio\RabbitTransport\DTOs\RabbitMessageDTO;
 
 /**
  * Fake publisher для проверки outbox-логики без реального RabbitMQ.

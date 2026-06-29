@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use DanCenter\Audit\Models\Audit;
-use DanCenter\Audit\Services\AuditInboxService;
+use PkmStudio\Audit\Models\Audit;
+use PkmStudio\Audit\Services\AuditInboxService;
 
 it('upserts incoming audit records idempotently by dedupe id', function (): void {
     $service = new AuditInboxService();

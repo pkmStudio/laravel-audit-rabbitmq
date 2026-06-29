@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use DanCenter\Audit\Models\Audit;
-use DanCenter\Audit\Services\AuditOutboxService;
-use DanCenter\Audit\Tests\Fakes\FakeAuditMessagePublisher;
+use PkmStudio\Audit\Models\Audit;
+use PkmStudio\Audit\Services\AuditOutboxService;
+use PkmStudio\Audit\Tests\Fakes\FakeAuditMessagePublisher;
 
 it('marks audit as published when rabbit publish is confirmed', function (): void {
     $audit = Audit::query()->create([

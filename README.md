@@ -1,8 +1,8 @@
-# dan-center/audit
+# pkmstudio/audit
 
 > Shared Laravel audit package for producer and consumer services: owen-it audit records, RabbitMQ outbox delivery, idempotent inbox storage and readable JSON payloads.
 
-`dan-center/audit` extracts the audit pipeline from the Dan Center monolith into a reusable package. It is built for a two-application setup:
+`pkmstudio/audit` extracts the audit pipeline from the Dan Center monolith into a reusable package. It is built for a two-application setup:
 
 - the CRM writes local `audits` records and publishes them to RabbitMQ;
 - the auditor service consumes `AUDIT_RECORDED` messages and stores them in its own PostgreSQL database.
@@ -10,20 +10,20 @@
 The package depends on:
 
 - `owen-it/laravel-auditing` for Eloquent model auditing;
-- `dan-center/rabbit-transport` for RabbitMQ publish/consume transport.
+- `pkmstudio/rabbit-transport` for RabbitMQ publish/consume transport.
 
 ## What it provides
 
 | Component | Class | Purpose |
 |---|---|---|
-| Audit model | `DanCenter\Audit\Models\Audit` | Owen-it Audit model with `json:unicode` and nested JSON-string decode. |
-| Source tags | `DanCenter\Audit\Traits\ResolvesAuditSource` | Writes `file`, `filament` or `system` into `tags`. |
-| Outbox service | `DanCenter\Audit\Services\AuditOutboxService` | Builds `AUDIT_RECORDED` payloads and publishes them through RabbitMQ. |
-| Publisher adapter | `DanCenter\Audit\Contracts\AuditMessagePublisher` | Allows the audit package to depend on a small publisher contract. |
-| Listener | `DanCenter\Audit\Listeners\PublishAuditRecord` | Handles `OwenIt\Auditing\Events\Audited` after DB commit. |
+| Audit model | `PkmStudio\Audit\Models\Audit` | Owen-it Audit model with `json:unicode` and nested JSON-string decode. |
+| Source tags | `PkmStudio\Audit\Traits\ResolvesAuditSource` | Writes `file`, `filament` or `system` into `tags`. |
+| Outbox service | `PkmStudio\Audit\Services\AuditOutboxService` | Builds `AUDIT_RECORDED` payloads and publishes them through RabbitMQ. |
+| Publisher adapter | `PkmStudio\Audit\Contracts\AuditMessagePublisher` | Allows the audit package to depend on a small publisher contract. |
+| Listener | `PkmStudio\Audit\Listeners\PublishAuditRecord` | Handles `OwenIt\Auditing\Events\Audited` after DB commit. |
 | Resender command | `audit:resend-failed` | Retries `audits` records where `published_at` is still null. |
-| Inbox service | `DanCenter\Audit\Services\AuditInboxService` | Validates incoming payloads and upserts by `dedupe_id`. |
-| DTO | `DanCenter\Audit\DTOs\AuditRecordDTO` | Stable payload between producer and consumer. |
+| Inbox service | `PkmStudio\Audit\Services\AuditInboxService` | Validates incoming payloads and upserts by `dedupe_id`. |
+| DTO | `PkmStudio\Audit\DTOs\AuditRecordDTO` | Stable payload between producer and consumer. |
 | Migrations | `database/migrations/*audits*` | `audits` table, outbox fields and `dedupe_id` unique index. |
 
 ## Installation
@@ -31,10 +31,10 @@ The package depends on:
 When both packages are published to Packagist:
 
 ```bash
-composer require dan-center/audit:^1.0
+composer require pkmstudio/audit:^1.0
 ```
 
-`dan-center/rabbit-transport` is required by this package and will be installed automatically.
+`pkmstudio/rabbit-transport` is required by this package and will be installed automatically.
 
 Before Packagist, add both GitHub repositories to the consuming app:
 
@@ -51,8 +51,8 @@ Before Packagist, add both GitHub repositories to the consuming app:
     }
   ],
   "require": {
-    "dan-center/audit": "dev-master",
-    "dan-center/rabbit-transport": "dev-master"
+    "pkmstudio/audit": "dev-master",
+    "pkmstudio/rabbit-transport": "dev-master"
   }
 }
 ```
@@ -74,7 +74,7 @@ For local development with sibling packages:
     }
   ],
   "require": {
-    "dan-center/audit": "@dev"
+    "pkmstudio/audit": "@dev"
   }
 }
 ```
@@ -96,7 +96,7 @@ php artisan migrate
 In `config/audit.php`, use the package model:
 
 ```php
-'implementation' => DanCenter\Audit\Models\Audit::class,
+'implementation' => PkmStudio\Audit\Models\Audit::class,
 'console' => env('AUDIT_CONSOLE', true),
 ```
 
@@ -109,7 +109,7 @@ Use this setup in the application that owns the original models and publishes au
 ### 1. Make models auditable
 
 ```php
-use DanCenter\Audit\Traits\ResolvesAuditSource;
+use PkmStudio\Audit\Traits\ResolvesAuditSource;
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Auditable as AuditableTrait;
 use OwenIt\Auditing\Contracts\Auditable;
@@ -134,7 +134,7 @@ final class Organization extends Model implements Auditable
 Register the listener for owen-it events:
 
 ```php
-use DanCenter\Audit\Listeners\PublishAuditRecord;
+use PkmStudio\Audit\Listeners\PublishAuditRecord;
 use OwenIt\Auditing\Events\Audited;
 
 protected $listen = [
@@ -175,7 +175,7 @@ crm.audit.organizations.updated
 
 ### 4. Configure RabbitMQ outbound
 
-The producer app also needs `dan-center/rabbit-transport` config:
+The producer app also needs `pkmstudio/rabbit-transport` config:
 
 ```php
 'outbound' => [
@@ -214,7 +214,7 @@ Use this setup in a separate audit service or any application that stores audit 
 ### 1. Configure inbound handler
 
 ```php
-use DanCenter\Audit\Services\AuditInboxService;
+use PkmStudio\Audit\Services\AuditInboxService;
 
 'inbound' => [
     'AUDIT_RECORDED' => [AuditInboxService::class, 'upsert'],
@@ -247,7 +247,7 @@ php artisan queue:work rabbitmq_inbox --queue=auditor.audit --sleep=1 --tries=3 
 The inbox service resolves the model from `config('audit.implementation')`, so the consumer must also use:
 
 ```php
-'implementation' => DanCenter\Audit\Models\Audit::class,
+'implementation' => PkmStudio\Audit\Models\Audit::class,
 ```
 
 ## Payload contract
@@ -337,7 +337,7 @@ Tag releases and update consuming apps through Composer:
 ```bash
 git tag v1.0.0
 git push origin v1.0.0
-composer update dan-center/audit dan-center/rabbit-transport
+composer update pkmstudio/audit pkmstudio/rabbit-transport
 ```
 
 ## License

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace DanCenter\Audit\Listeners;
+namespace PkmStudio\Audit\Listeners;
 
-use DanCenter\Audit\Services\AuditOutboxService;
+use PkmStudio\Audit\Services\AuditOutboxService;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Support\Facades\Log;

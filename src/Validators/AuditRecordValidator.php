@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DanCenter\Audit\Validators;
+namespace PkmStudio\Audit\Validators;
 
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;

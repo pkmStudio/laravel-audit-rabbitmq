@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DanCenter\Audit\DTOs;
+namespace PkmStudio\Audit\DTOs;
 
 use Carbon\CarbonImmutable;
 use JsonSerializable;

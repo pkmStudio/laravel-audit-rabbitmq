@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace DanCenter\Audit\Contracts;
+namespace PkmStudio\Audit\Contracts;
 
-use DanCenter\RabbitTransport\DTOs\RabbitMessageDTO;
+use PkmStudio\RabbitTransport\DTOs\RabbitMessageDTO;
 
 /**
  * Контракт публикации audit-сообщений в транспорт.

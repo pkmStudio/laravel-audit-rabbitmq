@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use DanCenter\Audit\Tests\TestCase;
+use PkmStudio\Audit\Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 require_once __DIR__.'/TestCase.php';

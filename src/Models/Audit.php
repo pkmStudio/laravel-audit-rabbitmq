@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DanCenter\Audit\Models;
+namespace PkmStudio\Audit\Models;
 
 use Illuminate\Support\Facades\Log;
 use OwenIt\Auditing\Models\Audit as BaseAudit;

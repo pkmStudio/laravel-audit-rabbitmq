@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace DanCenter\Audit\Services;
+namespace PkmStudio\Audit\Services;
 
-use DanCenter\Audit\DTOs\AuditRecordDTO;
-use DanCenter\Audit\Validators\AuditRecordValidator;
+use PkmStudio\Audit\DTOs\AuditRecordDTO;
+use PkmStudio\Audit\Validators\AuditRecordValidator;
 use Illuminate\Support\Facades\Log;
 use InvalidArgumentException;
 use OwenIt\Auditing\Contracts\Audit;

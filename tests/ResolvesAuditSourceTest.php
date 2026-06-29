@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use DanCenter\Audit\Tests\Fixtures\SourceTaggedModel;
+use PkmStudio\Audit\Tests\Fixtures\SourceTaggedModel;
 use Illuminate\Support\Facades\Context;
 
 it('resolves source tag from context with console fallback', function (): void {

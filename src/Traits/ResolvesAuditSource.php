@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DanCenter\Audit\Traits;
+namespace PkmStudio\Audit\Traits;
 
 use Illuminate\Support\Facades\Context;
 use Illuminate\Support\Facades\Log;

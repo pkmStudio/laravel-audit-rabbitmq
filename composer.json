@@ -1,5 +1,5 @@
 {
-    "name": "dan-center/audit",
+    "name": "pkmstudio/audit",
     "description": "Shared audit package: owen-it Audit model (readable unicode + nested JSON decode), source-tagging trait, outbox producer over rabbit-transport, and app-agnostic inbox consumer.",
     "type": "library",
     "license": "proprietary",
@@ -17,7 +17,7 @@
         "illuminate/console": "^12.0",
         "illuminate/contracts": "^12.0",
         "owen-it/laravel-auditing": "^14.0",
-        "dan-center/rabbit-transport": "dev-master"
+        "pkmstudio/rabbit-transport": "dev-master"
     },
     "require-dev": {
         "orchestra/testbench": "^10.0",
@@ -25,18 +25,18 @@
     },
     "autoload": {
         "psr-4": {
-            "DanCenter\\Audit\\": "src/"
+            "PkmStudio\\Audit\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "DanCenter\\Audit\\Tests\\": "tests/"
+            "PkmStudio\\Audit\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "DanCenter\\Audit\\AuditServiceProvider"
+                "PkmStudio\\Audit\\AuditServiceProvider"
             ]
         }
     },

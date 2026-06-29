@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace DanCenter\Audit\Tests\Fixtures;
+namespace PkmStudio\Audit\Tests\Fixtures;
 
-use DanCenter\Audit\Traits\ResolvesAuditSource;
+use PkmStudio\Audit\Traits\ResolvesAuditSource;
 use Illuminate\Database\Eloquent\Model;
 
 /**

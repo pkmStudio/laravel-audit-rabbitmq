@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace DanCenter\Audit\Publishers;
+namespace PkmStudio\Audit\Publishers;
 
-use DanCenter\Audit\Contracts\AuditMessagePublisher;
-use DanCenter\RabbitTransport\DTOs\RabbitMessageDTO;
-use DanCenter\RabbitTransport\RabbitMQPublisher;
+use PkmStudio\Audit\Contracts\AuditMessagePublisher;
+use PkmStudio\RabbitTransport\DTOs\RabbitMessageDTO;
+use PkmStudio\RabbitTransport\RabbitMQPublisher;
 use Illuminate\Support\Facades\Log;
 
 /**
- * Адаптер audit-пакета к dan-center/rabbit-transport.
+ * Адаптер audit-пакета к pkmstudio/rabbit-transport.
  */
 final readonly class RabbitTransportAuditMessagePublisher implements AuditMessagePublisher
 {

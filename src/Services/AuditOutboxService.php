@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace DanCenter\Audit\Services;
+namespace PkmStudio\Audit\Services;
 
 use Carbon\CarbonImmutable;
-use DanCenter\Audit\Contracts\AuditMessagePublisher;
-use DanCenter\Audit\DTOs\AuditRecordDTO;
-use DanCenter\RabbitTransport\DTOs\RabbitMessageDTO;
+use PkmStudio\Audit\Contracts\AuditMessagePublisher;
+use PkmStudio\Audit\DTOs\AuditRecordDTO;
+use PkmStudio\RabbitTransport\DTOs\RabbitMessageDTO;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Log;
